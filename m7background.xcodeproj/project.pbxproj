@@ -199,6 +199,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = dev;
 				TargetAttributes = {
+					D7870D3518897340005BD7BE = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					D7870D5618897340005BD7BE = {
 						TestTargetID = D7870D3518897340005BD7BE;
 					};
