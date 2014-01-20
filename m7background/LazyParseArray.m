@@ -22,6 +22,7 @@
     if([super init])
     {
         self.className = className;
+        self.alreadyVisited = [NSMutableDictionary new];
         counter = 0;
         PFQuery *query = [PFQuery queryWithClassName:self.className];
         [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
