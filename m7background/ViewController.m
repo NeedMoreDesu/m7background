@@ -13,12 +13,14 @@
 @interface ViewController ()
 {
     int _totalSteps;
-    int _handlerUsedCount;
+    __block ViewController *blockSelf;
 }
 
 @property CMStepCounter *stepCounter;
 @property CMMotionManager *motionManager;
 @property CMMotionActivityManager *motionActivityManager;
+
+@property NSNumber *motionManagerUseCount;
 
 @property (nonatomic) NSOperationQueue *operationQueue;
 
@@ -40,48 +42,93 @@
     return _operationQueue;
 }
 
+-(NSString*)formatWithMotion:(CMDeviceMotion*)motion
+                    useCount:(NSNumber*)useCount
+{
+    return [NSString stringWithFormat:
+            @"%@"
+            @"rotationXYZ: %.3f %.3f %.3f\n"
+            @"gravityXYZ: %.3f %.3f %.3f\n"
+            @"accelerationXYZ: %.3f %.3f %.3f\n"
+            @"magneticXYZ: %.3f %.3f %.3f\n"
+            @"count: %d",
+            motion.attitude,
+            motion.rotationRate.x,
+            motion.rotationRate.y,
+            motion.rotationRate.z,
+            motion.gravity.x,
+            motion.gravity.y,
+            motion.gravity.z,
+            motion.userAcceleration.x,
+            motion.userAcceleration.y,
+            motion.userAcceleration.z,
+            motion.magneticField.field.x,
+            motion.magneticField.field.y,
+            motion.magneticField.field.z,
+            useCount.intValue];
+}
+
+-(NSString*)formatWithMotionActivity:(CMMotionActivity*)activity
+{
+    return [NSString stringWithFormat:
+            @"stationary: %hhd\n"
+            "walking: %hhd\n"
+            "running %hhd\n"
+            "automotive %hhd\n"
+            "unknown %hhd\n"
+            "startDate %@\n"
+            "confidence %d",
+            activity.stationary,
+            activity.walking,
+            activity.running,
+            activity.automotive,
+            activity.unknown,
+            activity.startDate,
+            activity.confidence];
+}
+
+-(void)sendToParseWithClassName:(NSString*)className
+                     dictionary:(NSDictionary*)dictionary
+{
+    PFObject *pfobject = [PFObject objectWithClassName:className];
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        pfobject[key] = obj;
+    }];
+    [pfobject saveInBackground];
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    blockSelf = self;
     _totalSteps = 0;
-    _handlerUsedCount = 0;
+    self.motionManagerUseCount = @0;
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 1.0;
+    
+//    for (int i = 0; i<30; i++) {
+//        [self
+//         sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
+//                                   objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
+//         dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
+//    }
     
     [self.motionManager
      startDeviceMotionUpdatesToQueue:self.operationQueue
      withHandler:^(CMDeviceMotion *motion, NSError *error) {
          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-             PFObject *motionObject = [PFObject objectWithClassName:@"Motion"];
-             _handlerUsedCount++;
-             self.motionLabel.text = [NSString stringWithFormat:
-                                      @"%@"
-                                      @"rotationXYZ: %.3f %.3f %.3f\n"
-                                      @"gravityXYZ: %.3f %.3f %.3f\n"
-                                      @"accelerationXYZ: %.3f %.3f %.3f\n"
-                                      @"magneticXYZ: %.3f %.3f %.3f\n"
-                                      @"count: %d",
-                                      motion.attitude,
-                                      motion.rotationRate.x,
-                                      motion.rotationRate.y,
-                                      motion.rotationRate.z,
-                                      motion.gravity.x,
-                                      motion.gravity.y,
-                                      motion.gravity.z,
-                                      motion.userAcceleration.x,
-                                      motion.userAcceleration.y,
-                                      motion.userAcceleration.z,
-                                      motion.magneticField.field.x,
-                                      motion.magneticField.field.y,
-                                      motion.magneticField.field.z,
-                                      _handlerUsedCount];
-             motionObject[@"string"] = self.motionLabel.text;
-             [motionObject saveInBackground];
+             NSString *formattedString = [blockSelf
+                                          formatWithMotion:motion
+                                          useCount:blockSelf.motionManagerUseCount];
+             blockSelf.motionLabel.text = formattedString;
+             [blockSelf
+              sendToParseWithClassName:@"Motion"
+              dictionary:@{@"string":formattedString}];
          }];
      }];
-    
     if ([CMMotionActivityManager isActivityAvailable])
     {
         self.motionActivityManager = [[CMMotionActivityManager alloc] init];
@@ -89,24 +136,12 @@
          startActivityUpdatesToQueue:self.operationQueue
          withHandler:^(CMMotionActivity *activity) {
              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 PFObject *motionActivityObject = [PFObject objectWithClassName:@"MotionActivity"];
-                 self.motionActivityLabel.text = [NSString stringWithFormat:
-                                                  @"stationary: %hhd\n"
-                                                  "walking: %hhd\n"
-                                                  "running %hhd\n"
-                                                  "automotive %hhd\n"
-                                                  "unknown %hhd\n"
-                                                  "startDate %@\n"
-                                                  "confidence %d",
-                                                  activity.stationary,
-                                                  activity.walking,
-                                                  activity.running,
-                                                  activity.automotive,
-                                                  activity.unknown,
-                                                  activity.startDate,
-                                                  activity.confidence];
-                 motionActivityObject[@"string"] = self.motionActivityLabel.text;
-                 [motionActivityObject saveInBackground];
+                 NSString *formattedString = [blockSelf
+                                              formatWithMotionActivity:activity];
+                 blockSelf.motionActivityLabel.text = formattedString;
+                 [blockSelf
+                  sendToParseWithClassName:@"MotionActivity"
+                  dictionary:@{@"string":formattedString}];
              }];
          }];
     }
@@ -120,11 +155,12 @@
          withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error)
          {
              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 PFObject *stepObject = [PFObject objectWithClassName:@"Step"];
                  _totalSteps += numberOfSteps;
-                 self.stepsCountingLabel.text = [NSString stringWithFormat:@"Steps: %ld, Total steps: %d", (long)numberOfSteps, _totalSteps];
-                 stepObject[@"string"] = self.stepsCountingLabel.text;
-                 [stepObject saveInBackground];
+                 NSString *formattedString = [NSString stringWithFormat:@"Steps: %ld, Total steps: %d", (long)numberOfSteps, _totalSteps];
+                 blockSelf.motionActivityLabel.text = formattedString;
+                 [blockSelf
+                  sendToParseWithClassName:@"Steps"
+                  dictionary:@{@"string":formattedString}];
              }];
          }];
     }

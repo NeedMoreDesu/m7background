@@ -31,6 +31,8 @@
 		D7870D81188D29CF005BD7BE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D80188D29CF005BD7BE /* Security.framework */; };
 		D7870D83188D29D8005BD7BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D82188D29D8005BD7BE /* StoreKit.framework */; };
 		D7870D85188D29E9005BD7BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D84188D29E9005BD7BE /* SystemConfiguration.framework */; };
+		D7870D89188D7690005BD7BE /* LazyParseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D7870D88188D7690005BD7BE /* LazyParseArray.m */; };
+		D7870D8C188D7DCC005BD7BE /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7870D8B188D7DCC005BD7BE /* DataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,10 @@
 		D7870D80188D29CF005BD7BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D7870D82188D29D8005BD7BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D7870D84188D29E9005BD7BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D7870D87188D7690005BD7BE /* LazyParseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyParseArray.h; sourceTree = "<group>"; };
+		D7870D88188D7690005BD7BE /* LazyParseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyParseArray.m; sourceTree = "<group>"; };
+		D7870D8A188D7DCC005BD7BE /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		D7870D8B188D7DCC005BD7BE /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,11 +158,14 @@
 		D7870D3F18897340005BD7BE /* m7background */ = {
 			isa = PBXGroup;
 			children = (
+				D7870D86188D744F005BD7BE /* Additional */,
 				D7870D4818897340005BD7BE /* AppDelegate.h */,
 				D7870D4918897340005BD7BE /* AppDelegate.m */,
 				D7870D4B18897340005BD7BE /* Main.storyboard */,
 				D7870D4E18897340005BD7BE /* ViewController.h */,
 				D7870D4F18897340005BD7BE /* ViewController.m */,
+				D7870D8A188D7DCC005BD7BE /* DataViewController.h */,
+				D7870D8B188D7DCC005BD7BE /* DataViewController.m */,
 				D7870D5118897340005BD7BE /* Images.xcassets */,
 				D7870D4018897340005BD7BE /* Supporting Files */,
 			);
@@ -190,6 +199,15 @@
 				D7870D6118897340005BD7BE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7870D86188D744F005BD7BE /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				D7870D87188D7690005BD7BE /* LazyParseArray.h */,
+				D7870D88188D7690005BD7BE /* LazyParseArray.m */,
+			);
+			name = Additional;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,8 +315,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7870D5018897340005BD7BE /* ViewController.m in Sources */,
+				D7870D89188D7690005BD7BE /* LazyParseArray.m in Sources */,
 				D7870D4A18897340005BD7BE /* AppDelegate.m in Sources */,
 				D7870D4618897340005BD7BE /* main.m in Sources */,
+				D7870D8C188D7DCC005BD7BE /* DataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
