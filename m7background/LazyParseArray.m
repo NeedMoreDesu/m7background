@@ -17,16 +17,10 @@
 
 @implementation LazyParseArray
 
-- (void)updateCount
+- (NSUInteger)updateAndReturnCounter
 {
     PFQuery *query = [PFQuery queryWithClassName:self.className];
-    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
-        counter = number;
-    }];
-}
-- (void)increaseCount
-{
-    counter++;
+    return (counter = [query countObjects]);
 }
 
 - initWithClassName:(NSString*)className finishedCountingHandler:(void (^)())handler

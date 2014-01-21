@@ -9,6 +9,11 @@
 #import "DataViewController.h"
 
 @interface DataViewController ()
+{
+    int newCells;
+}
+
+@property UIRefreshControl *refreshControl;
 
 @end
 
@@ -19,6 +24,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        newCells = 0;
     }
     return self;
 }
@@ -26,6 +32,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl
+     addTarget:self
+     action:@selector(refreshInvoked:forState:)
+     forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
     
 //    if(!self.array)
 //        self.array = [[LazyParseArray alloc]
@@ -39,6 +52,19 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void) refreshInvoked:(id)sender forState:(UIControlState)state {
+    // Refresh table here...
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        int oldCount = self.array.count;
+        int newCount = [self.array updateAndReturnCounter];
+        newCells = newCount - oldCount;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,17 +92,22 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.text = @"Loading...";
     cell.detailTextLabel.text = @" ";
     NSInteger randId = arc4random();
     cell.tag = randId;
+    NSUInteger idx = self.array.count - indexPath.row - 1;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        PFObject *obj = [self.array objectAtIndex:indexPath.row];
+        PFObject *obj = [self.array objectAtIndex:idx];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (cell.tag == randId)
             {
                 cell.textLabel.text = obj[@"string"];
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", obj.createdAt];
+                if (indexPath.row < newCells) {
+                    cell.backgroundColor = [UIColor colorWithRed:100 green:255 blue:0 alpha:1.0];
+                }
             }
 //            [self.tableView beginUpdates];
 //            [self.tableView
