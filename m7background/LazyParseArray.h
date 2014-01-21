@@ -18,5 +18,7 @@
 
 - (PFObject*)objectAtIndex:(NSUInteger)index;
 - (NSUInteger)count;
+- (void)updateCount;
+- (void)increaseCount;
 
 @end

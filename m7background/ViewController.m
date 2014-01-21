@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DataViewController.h"
 #import <CoreMotion/CoreMotion.h>
 #import <Parse/Parse.h>
 
@@ -14,6 +15,7 @@
 {
     int _totalSteps;
     __block ViewController *blockSelf;
+    DataViewController *dvc;
 }
 
 @property CMStepCounter *stepCounter;
@@ -109,12 +111,16 @@
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 1.0;
     
-//    for (int i = 0; i<30; i++) {
-//        [self
-//         sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
-//                                   objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
-//         dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
-//    }
+//    double delayInSeconds = 10.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//            for (int i = 0; i<30; i++) {
+//                [self
+//                 sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
+//                                           objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
+//                 dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
+//            }
+//    });
     
     [self.motionManager
      startDeviceMotionUpdatesToQueue:self.operationQueue
@@ -172,6 +178,33 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    dvc = [segue destinationViewController];
+    if([[segue identifier] isEqualToString:@"motionList"])
+    {
+        dvc.array = [[LazyParseArray alloc]
+                     initWithClassName:@"Motion"
+                     finishedCountingHandler:^{
+                         [dvc.tableView reloadData];
+                     }];
+    } else if([[segue identifier] isEqualToString:@"motionActivityList"])
+    {
+        dvc.array = [[LazyParseArray alloc]
+                     initWithClassName:@"MotionActivity"
+                     finishedCountingHandler:^{
+                         [dvc.tableView reloadData];
+                     }];
+    } else if([[segue identifier] isEqualToString:@"stepsList"])
+    {
+        dvc.array = [[LazyParseArray alloc]
+                     initWithClassName:@"Steps"
+                     finishedCountingHandler:^{
+                         [dvc.tableView reloadData];
+                     }];
+    }
 }
 
 @end

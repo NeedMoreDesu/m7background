@@ -27,12 +27,12 @@
 {
     [super viewDidLoad];
     
-    if(!self.array)
-        self.array = [[LazyParseArray alloc]
-                      initWithClassName:@"Motion"
-                      finishedCountingHandler:^{
-                          [self.tableView reloadData];
-                      }];
+//    if(!self.array)
+//        self.array = [[LazyParseArray alloc]
+//                      initWithClassName:@"Motion"
+//                      finishedCountingHandler:^{
+//                          [self.tableView reloadData];
+//                      }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -68,11 +68,16 @@
     
     cell.textLabel.text = @"Loading...";
     cell.detailTextLabel.text = @" ";
+    NSInteger randId = arc4random();
+    cell.tag = randId;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         PFObject *obj = [self.array objectAtIndex:indexPath.row];
         dispatch_async(dispatch_get_main_queue(), ^{
-            cell.textLabel.text = obj[@"string"];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", obj.createdAt];
+            if (cell.tag == randId)
+            {
+                cell.textLabel.text = obj[@"string"];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", obj.createdAt];
+            }
 //            [self.tableView beginUpdates];
 //            [self.tableView
 //             reloadRowsAtIndexPaths:@[indexPath]

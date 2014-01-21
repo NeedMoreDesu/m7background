@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LazyParseArray.h"
 
 @interface ViewController : UIViewController
 
