@@ -111,17 +111,17 @@
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 1.0;
 
-//    // Imitate data load
-//    double delayInSeconds = 5.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//            for (int i = 0; i<30; i++) {
-//                [self
-//                 sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
-//                                           objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
-//                 dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
-//            }
-//    });
+    // Imitate data load
+    double delayInSeconds = 5.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            for (int i = 0; i<30; i++) {
+                [self
+                 sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
+                                           objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
+                 dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
+            }
+    });
     
     [self.motionManager
      startDeviceMotionUpdatesToQueue:self.operationQueue

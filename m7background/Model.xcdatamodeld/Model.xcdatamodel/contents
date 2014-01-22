@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Gravity" representedClassName="Gravity" syncable="YES">
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="motion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Motion" inverseName="gravity" inverseEntity="Motion" syncable="YES"/>
+    </entity>
+    <entity name="MagneticField" representedClassName="MagneticField" syncable="YES">
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="motion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Motion" inverseName="magneticField" inverseEntity="Motion" syncable="YES"/>
+    </entity>
+    <entity name="Motion" representedClassName="Motion" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="gravity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gravity" inverseName="motion" inverseEntity="Gravity" syncable="YES"/>
+        <relationship name="magneticField" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MagneticField" inverseName="motion" inverseEntity="MagneticField" syncable="YES"/>
+        <relationship name="rotation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Rotation" inverseName="motion" inverseEntity="Rotation" syncable="YES"/>
+        <relationship name="userAcceleration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserAcceleration" inverseName="motion" inverseEntity="UserAcceleration" syncable="YES"/>
+    </entity>
+    <entity name="Rotation" representedClassName="Rotation" syncable="YES">
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="motion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Motion" inverseName="rotation" inverseEntity="Motion" syncable="YES"/>
+    </entity>
+    <entity name="UserAcceleration" representedClassName="UserAcceleration" syncable="YES">
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="z" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="motion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Motion" inverseName="userAcceleration" inverseEntity="Motion" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Rotation" positionX="-927" positionY="-1350" width="128" height="90"/>
+        <element name="Gravity" positionX="-927" positionY="-1323" width="128" height="45"/>
+        <element name="UserAcceleration" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MagneticField" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Motion" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

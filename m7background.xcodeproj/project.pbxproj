@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CFC0ED5389F446F386EC20B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDBCD6566A14A9F8E3DD02A /* libPods.a */; };
 		D7870D3A18897340005BD7BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3918897340005BD7BE /* Foundation.framework */; };
 		D7870D3C18897340005BD7BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3B18897340005BD7BE /* CoreGraphics.framework */; };
 		D7870D3E18897340005BD7BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3D18897340005BD7BE /* UIKit.framework */; };
@@ -33,6 +34,13 @@
 		D7870D85188D29E9005BD7BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D84188D29E9005BD7BE /* SystemConfiguration.framework */; };
 		D7870D89188D7690005BD7BE /* LazyParseArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D7870D88188D7690005BD7BE /* LazyParseArray.m */; };
 		D7870D8C188D7DCC005BD7BE /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7870D8B188D7DCC005BD7BE /* DataViewController.m */; };
+		D787B7F3189005A600377325 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D787B7F1189005A600377325 /* Model.xcdatamodeld */; };
+		D787B7F61890088D00377325 /* Gravity.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7F51890088D00377325 /* Gravity.m */; };
+		D787B7F91890088D00377325 /* Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7F81890088D00377325 /* Rotation.m */; };
+		D787B7FC1890088D00377325 /* UserAcceleration.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7FB1890088D00377325 /* UserAcceleration.m */; };
+		D787B7FF1890088D00377325 /* MagneticField.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7FE1890088D00377325 /* MagneticField.m */; };
+		D787B8021890088D00377325 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B8011890088D00377325 /* Motion.m */; };
+		D787B804189009F300377325 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D787B803189009F300377325 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7BCBB4F824884AF4AC744E8D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8BDBCD6566A14A9F8E3DD02A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7870D3618897340005BD7BE /* m7background.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = m7background.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7870D3918897340005BD7BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D7870D3B18897340005BD7BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +89,18 @@
 		D7870D88188D7690005BD7BE /* LazyParseArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LazyParseArray.m; sourceTree = "<group>"; };
 		D7870D8A188D7DCC005BD7BE /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		D7870D8B188D7DCC005BD7BE /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		D787B7F2189005A600377325 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D787B7F41890088D00377325 /* Gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gravity.h; sourceTree = "<group>"; };
+		D787B7F51890088D00377325 /* Gravity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gravity.m; sourceTree = "<group>"; };
+		D787B7F71890088D00377325 /* Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rotation.h; sourceTree = "<group>"; };
+		D787B7F81890088D00377325 /* Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rotation.m; sourceTree = "<group>"; };
+		D787B7FA1890088D00377325 /* UserAcceleration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAcceleration.h; sourceTree = "<group>"; };
+		D787B7FB1890088D00377325 /* UserAcceleration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAcceleration.m; sourceTree = "<group>"; };
+		D787B7FD1890088D00377325 /* MagneticField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagneticField.h; sourceTree = "<group>"; };
+		D787B7FE1890088D00377325 /* MagneticField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagneticField.m; sourceTree = "<group>"; };
+		D787B8001890088D00377325 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
+		D787B8011890088D00377325 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
+		D787B803189009F300377325 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D787B804189009F300377325 /* CoreData.framework in Frameworks */,
 				D7870D85188D29E9005BD7BE /* SystemConfiguration.framework in Frameworks */,
 				D7870D83188D29D8005BD7BE /* StoreKit.framework in Frameworks */,
 				D7870D81188D29CF005BD7BE /* Security.framework in Frameworks */,
@@ -99,6 +122,7 @@
 				D7870D73188D2944005BD7BE /* Parse.framework in Frameworks */,
 				D7870D3E18897340005BD7BE /* UIKit.framework in Frameworks */,
 				D7870D3A18897340005BD7BE /* Foundation.framework in Frameworks */,
+				CFC0ED5389F446F386EC20B4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +146,7 @@
 				D7870D5E18897340005BD7BE /* m7backgroundTests */,
 				D7870D3818897340005BD7BE /* Frameworks */,
 				D7870D3718897340005BD7BE /* Products */,
+				7BCBB4F824884AF4AC744E8D /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +162,7 @@
 		D7870D3818897340005BD7BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D787B803189009F300377325 /* CoreData.framework */,
 				D7870D84188D29E9005BD7BE /* SystemConfiguration.framework */,
 				D7870D82188D29D8005BD7BE /* StoreKit.framework */,
 				D7870D80188D29CF005BD7BE /* Security.framework */,
@@ -151,6 +177,7 @@
 				D7870D3B18897340005BD7BE /* CoreGraphics.framework */,
 				D7870D3D18897340005BD7BE /* UIKit.framework */,
 				D7870D5818897340005BD7BE /* XCTest.framework */,
+				8BDBCD6566A14A9F8E3DD02A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,13 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				D7870D86188D744F005BD7BE /* Additional */,
-				D7870D4818897340005BD7BE /* AppDelegate.h */,
-				D7870D4918897340005BD7BE /* AppDelegate.m */,
-				D7870D4B18897340005BD7BE /* Main.storyboard */,
-				D7870D4E18897340005BD7BE /* ViewController.h */,
-				D7870D4F18897340005BD7BE /* ViewController.m */,
-				D7870D8A188D7DCC005BD7BE /* DataViewController.h */,
-				D7870D8B188D7DCC005BD7BE /* DataViewController.m */,
+				D787B7EE1890053D00377325 /* Model */,
+				D787B7EF1890055000377325 /* View */,
+				D787B7F01890055600377325 /* Controller */,
 				D7870D5118897340005BD7BE /* Images.xcassets */,
 				D7870D4018897340005BD7BE /* Supporting Files */,
 			);
@@ -210,6 +233,45 @@
 			name = Additional;
 			sourceTree = "<group>";
 		};
+		D787B7EE1890053D00377325 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D787B7F1189005A600377325 /* Model.xcdatamodeld */,
+				D787B8001890088D00377325 /* Motion.h */,
+				D787B8011890088D00377325 /* Motion.m */,
+				D787B7FD1890088D00377325 /* MagneticField.h */,
+				D787B7FE1890088D00377325 /* MagneticField.m */,
+				D787B7FA1890088D00377325 /* UserAcceleration.h */,
+				D787B7FB1890088D00377325 /* UserAcceleration.m */,
+				D787B7F71890088D00377325 /* Rotation.h */,
+				D787B7F81890088D00377325 /* Rotation.m */,
+				D787B7F41890088D00377325 /* Gravity.h */,
+				D787B7F51890088D00377325 /* Gravity.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D787B7EF1890055000377325 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7870D4B18897340005BD7BE /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D787B7F01890055600377325 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D7870D4818897340005BD7BE /* AppDelegate.h */,
+				D7870D4918897340005BD7BE /* AppDelegate.m */,
+				D7870D4E18897340005BD7BE /* ViewController.h */,
+				D7870D4F18897340005BD7BE /* ViewController.m */,
+				D7870D8A188D7DCC005BD7BE /* DataViewController.h */,
+				D7870D8B188D7DCC005BD7BE /* DataViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -217,9 +279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7870D6818897340005BD7BE /* Build configuration list for PBXNativeTarget "m7background" */;
 			buildPhases = (
+				2892E10428FB44B0A606374A /* Check Pods Manifest.lock */,
 				D7870D3218897340005BD7BE /* Sources */,
 				D7870D3318897340005BD7BE /* Frameworks */,
 				D7870D3418897340005BD7BE /* Resources */,
+				5D6FCF79EB624CF9AB220C24 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,6 +373,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2892E10428FB44B0A606374A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5D6FCF79EB624CF9AB220C24 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D7870D3218897340005BD7BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -316,9 +413,15 @@
 			files = (
 				D7870D5018897340005BD7BE /* ViewController.m in Sources */,
 				D7870D89188D7690005BD7BE /* LazyParseArray.m in Sources */,
+				D787B7FC1890088D00377325 /* UserAcceleration.m in Sources */,
 				D7870D4A18897340005BD7BE /* AppDelegate.m in Sources */,
 				D7870D4618897340005BD7BE /* main.m in Sources */,
 				D7870D8C188D7DCC005BD7BE /* DataViewController.m in Sources */,
+				D787B8021890088D00377325 /* Motion.m in Sources */,
+				D787B7F91890088D00377325 /* Rotation.m in Sources */,
+				D787B7F61890088D00377325 /* Gravity.m in Sources */,
+				D787B7FF1890088D00377325 /* MagneticField.m in Sources */,
+				D787B7F3189005A600377325 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +545,7 @@
 		};
 		D7870D6918897340005BD7BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BCBB4F824884AF4AC744E8D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -460,6 +564,7 @@
 		};
 		D7870D6A18897340005BD7BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BCBB4F824884AF4AC744E8D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -537,6 +642,7 @@
 				D7870D6A18897340005BD7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7870D6B18897340005BD7BE /* Build configuration list for PBXNativeTarget "m7backgroundTests" */ = {
 			isa = XCConfigurationList;
@@ -545,8 +651,22 @@
 				D7870D6D18897340005BD7BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D787B7F1189005A600377325 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D787B7F2189005A600377325 /* Model.xcdatamodel */,
+			);
+			currentVersion = D787B7F2189005A600377325 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D7870D2E18897340005BD7BE /* Project object */;
 }
