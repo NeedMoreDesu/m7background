@@ -10,5 +10,6 @@
 #import "LazyParseArray.h"
 
 @interface ViewController : UIViewController
+<CLLocationManagerDelegate>
 
 @end

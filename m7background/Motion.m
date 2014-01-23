@@ -15,9 +15,12 @@
 
 @implementation Motion
 
-@dynamic rotation;
+@dynamic createdAt;
+@dynamic updatedAt;
+@dynamic string;
 @dynamic gravity;
 @dynamic magneticField;
+@dynamic rotation;
 @dynamic userAcceleration;
 
 @end

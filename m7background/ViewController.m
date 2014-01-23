@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "DataViewController.h"
+#import "AppDelegate.h"
 #import <CoreMotion/CoreMotion.h>
 #import <Parse/Parse.h>
 
@@ -73,18 +74,18 @@
 -(NSString*)formatWithMotionActivity:(CMMotionActivity*)activity
 {
     return [NSString stringWithFormat:
-            @"stationary: %hhd\n"
-            "walking: %hhd\n"
-            "running %hhd\n"
-            "automotive %hhd\n"
-            "unknown %hhd\n"
+            @"stationary: %@\n"
+            "walking: %@\n"
+            "running %@\n"
+            "automotive %@\n"
+            "unknown %@\n"
             "startDate %@\n"
-            "confidence %d",
-            activity.stationary,
-            activity.walking,
-            activity.running,
-            activity.automotive,
-            activity.unknown,
+            "confidence %ld",
+            activity.stationary?@"YES":@"NO",
+            activity.walking?@"YES":@"NO",
+            activity.running?@"YES":@"NO",
+            activity.automotive?@"YES":@"NO",
+            activity.unknown?@"YES":@"NO",
             activity.startDate,
             activity.confidence];
 }
@@ -111,69 +112,87 @@
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.deviceMotionUpdateInterval = 1.0;
 
-    // Imitate data load
-    double delayInSeconds = 5.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            for (int i = 0; i<30; i++) {
-                [self
-                 sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
-                                           objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
-                 dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
-            }
-    });
+//    // Imitate data load
+//    double delayInSeconds = 5.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//            for (int i = 0; i<30; i++) {
+//                [self
+//                 sendToParseWithClassName:[@{@1:@"Motion", @2:@"MotionActivity", @3:@"Steps"}
+//                                           objectForKey:[NSNumber numberWithInt:1+arc4random_uniform(3)]]
+//                 dictionary:@{@"string":[NSString stringWithFormat:@"random:%u", arc4random_uniform(42)]}];
+//            }
+//    });
     
     [self.motionManager
-     startDeviceMotionUpdatesToQueue:self.operationQueue
-     withHandler:^(CMDeviceMotion *motion, NSError *error) {
-         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-             NSString *formattedString = [blockSelf
-                                          formatWithMotion:motion
-                                          useCount:blockSelf.motionManagerUseCount];
-             blockSelf.motionLabel.text = formattedString;
-             [blockSelf
-              sendToParseWithClassName:@"Motion"
-              dictionary:@{@"string":formattedString}];
-         }];
+     startAccelerometerUpdatesToQueue:self.operationQueue
+     withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+         NSLog(@"accel: %@",accelerometerData);
      }];
-    if ([CMMotionActivityManager isActivityAvailable])
-    {
-        self.motionActivityManager = [[CMMotionActivityManager alloc] init];
-        [self.motionActivityManager
-         startActivityUpdatesToQueue:self.operationQueue
-         withHandler:^(CMMotionActivity *activity) {
-             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 NSString *formattedString = [blockSelf
-                                              formatWithMotionActivity:activity];
-                 blockSelf.motionActivityLabel.text = formattedString;
-                 [blockSelf
-                  sendToParseWithClassName:@"MotionActivity"
-                  dictionary:@{@"string":formattedString}];
-             }];
-         }];
-    }
     
-    if ([CMStepCounter isStepCountingAvailable])
-    {
-        self.stepCounter = [[CMStepCounter alloc] init];
-        [self.stepCounter
-         startStepCountingUpdatesToQueue:self.operationQueue
-         updateOn:1
-         withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error)
-         {
-             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 _totalSteps += numberOfSteps;
-                 NSString *formattedString = [NSString stringWithFormat:@"Steps: %ld, Total steps: %d", (long)numberOfSteps, _totalSteps];
-                 blockSelf.motionActivityLabel.text = formattedString;
-                 [blockSelf
-                  sendToParseWithClassName:@"Steps"
-                  dictionary:@{@"string":formattedString}];
-             }];
-         }];
-    }
+//    [self.motionManager
+//     startDeviceMotionUpdatesToQueue:self.operationQueue
+//     withHandler:^(CMDeviceMotion *motion, NSError *error) {
+//         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//             NSString *formattedString = [blockSelf
+//                                          formatWithMotion:motion
+//                                          useCount:blockSelf.motionManagerUseCount];
+//             blockSelf.motionLabel.text = formattedString;
+//             [blockSelf
+//              sendToParseWithClassName:@"Motion"
+//              dictionary:@{@"string":formattedString}];
+//         }];
+//     }];
+//    if ([CMMotionActivityManager isActivityAvailable])
+//    {
+//        self.motionActivityManager = [[CMMotionActivityManager alloc] init];
+//        [self.motionActivityManager
+//         startActivityUpdatesToQueue:self.operationQueue
+//         withHandler:^(CMMotionActivity *activity) {
+//             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                 NSString *formattedString = [blockSelf
+//                                              formatWithMotionActivity:activity];
+//                 blockSelf.motionActivityLabel.text = formattedString;
+//                 [blockSelf
+//                  sendToParseWithClassName:@"MotionActivity"
+//                  dictionary:@{@"string":formattedString}];
+//             }];
+//         }];
+//    }
     
-	// Do any additional setup after loading the view, typically from a nib.
+//    if ([CMStepCounter isStepCountingAvailable])
+//    {
+//        self.stepCounter = [[CMStepCounter alloc] init];
+//        [self.stepCounter
+//         startStepCountingUpdatesToQueue:self.operationQueue
+//         updateOn:1
+//         withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error)
+//         {
+//             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                 _totalSteps += numberOfSteps;
+//                 NSString *formattedString = [NSString stringWithFormat:@"Steps: %ld, Total steps: %d", (long)numberOfSteps, _totalSteps];
+//                 blockSelf.stepsCountingLabel.text = formattedString;
+//                 [blockSelf
+//                  sendToParseWithClassName:@"Steps"
+//                  dictionary:@{@"string":formattedString}];
+//             }];
+//         }];
+//    }
 }
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"from: %@ to: %@", oldLocation, newLocation);
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	 didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"locs: %@", locations);
+}
+
 
 - (void)didReceiveMemoryWarning
 {

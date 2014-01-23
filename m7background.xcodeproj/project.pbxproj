@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CFC0ED5389F446F386EC20B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDBCD6566A14A9F8E3DD02A /* libPods.a */; };
+		D7867819189035E9000AA7BD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D71188D2843005BD7BE /* Parse.framework */; };
+		D786781C18903778000AA7BD /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = D786781B18903778000AA7BD /* Motion.m */; };
 		D7870D3A18897340005BD7BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3918897340005BD7BE /* Foundation.framework */; };
 		D7870D3C18897340005BD7BE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3B18897340005BD7BE /* CoreGraphics.framework */; };
 		D7870D3E18897340005BD7BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3D18897340005BD7BE /* UIKit.framework */; };
@@ -22,7 +24,6 @@
 		D7870D5B18897340005BD7BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D3D18897340005BD7BE /* UIKit.framework */; };
 		D7870D6318897340005BD7BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7870D6118897340005BD7BE /* InfoPlist.strings */; };
 		D7870D6518897340005BD7BE /* m7backgroundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7870D6418897340005BD7BE /* m7backgroundTests.m */; };
-		D7870D73188D2944005BD7BE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D71188D2843005BD7BE /* Parse.framework */; };
 		D7870D75188D2986005BD7BE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D74188D2986005BD7BE /* AudioToolbox.framework */; };
 		D7870D77188D2990005BD7BE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D76188D2990005BD7BE /* CFNetwork.framework */; };
 		D7870D79188D29A5005BD7BE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7870D78188D29A5005BD7BE /* CoreLocation.framework */; };
@@ -39,7 +40,6 @@
 		D787B7F91890088D00377325 /* Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7F81890088D00377325 /* Rotation.m */; };
 		D787B7FC1890088D00377325 /* UserAcceleration.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7FB1890088D00377325 /* UserAcceleration.m */; };
 		D787B7FF1890088D00377325 /* MagneticField.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B7FE1890088D00377325 /* MagneticField.m */; };
-		D787B8021890088D00377325 /* Motion.m in Sources */ = {isa = PBXBuildFile; fileRef = D787B8011890088D00377325 /* Motion.m */; };
 		D787B804189009F300377325 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D787B803189009F300377325 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +56,8 @@
 /* Begin PBXFileReference section */
 		7BCBB4F824884AF4AC744E8D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8BDBCD6566A14A9F8E3DD02A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D786781A18903778000AA7BD /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
+		D786781B18903778000AA7BD /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		D7870D3618897340005BD7BE /* m7background.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = m7background.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7870D3918897340005BD7BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D7870D3B18897340005BD7BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,8 +100,6 @@
 		D787B7FB1890088D00377325 /* UserAcceleration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAcceleration.m; sourceTree = "<group>"; };
 		D787B7FD1890088D00377325 /* MagneticField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagneticField.h; sourceTree = "<group>"; };
 		D787B7FE1890088D00377325 /* MagneticField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagneticField.m; sourceTree = "<group>"; };
-		D787B8001890088D00377325 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
-		D787B8011890088D00377325 /* Motion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motion.m; sourceTree = "<group>"; };
 		D787B803189009F300377325 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -108,18 +108,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7867819189035E9000AA7BD /* Parse.framework in Frameworks */,
+				D7870D77188D2990005BD7BE /* CFNetwork.framework in Frameworks */,
+				D7870D7D188D29BB005BD7BE /* MobileCoreServices.framework in Frameworks */,
 				D787B804189009F300377325 /* CoreData.framework in Frameworks */,
 				D7870D85188D29E9005BD7BE /* SystemConfiguration.framework in Frameworks */,
 				D7870D83188D29D8005BD7BE /* StoreKit.framework in Frameworks */,
 				D7870D81188D29CF005BD7BE /* Security.framework in Frameworks */,
 				D7870D7F188D29C2005BD7BE /* QuartzCore.framework in Frameworks */,
-				D7870D7D188D29BB005BD7BE /* MobileCoreServices.framework in Frameworks */,
 				D7870D7B188D29AE005BD7BE /* libz.dylib in Frameworks */,
 				D7870D79188D29A5005BD7BE /* CoreLocation.framework in Frameworks */,
 				D7870D3C18897340005BD7BE /* CoreGraphics.framework in Frameworks */,
-				D7870D77188D2990005BD7BE /* CFNetwork.framework in Frameworks */,
 				D7870D75188D2986005BD7BE /* AudioToolbox.framework in Frameworks */,
-				D7870D73188D2944005BD7BE /* Parse.framework in Frameworks */,
 				D7870D3E18897340005BD7BE /* UIKit.framework in Frameworks */,
 				D7870D3A18897340005BD7BE /* Foundation.framework in Frameworks */,
 				CFC0ED5389F446F386EC20B4 /* libPods.a in Frameworks */,
@@ -236,9 +236,9 @@
 		D787B7EE1890053D00377325 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D786781A18903778000AA7BD /* Motion.h */,
+				D786781B18903778000AA7BD /* Motion.m */,
 				D787B7F1189005A600377325 /* Model.xcdatamodeld */,
-				D787B8001890088D00377325 /* Motion.h */,
-				D787B8011890088D00377325 /* Motion.m */,
 				D787B7FD1890088D00377325 /* MagneticField.h */,
 				D787B7FE1890088D00377325 /* MagneticField.m */,
 				D787B7FA1890088D00377325 /* UserAcceleration.h */,
@@ -322,6 +322,7 @@
 				ORGANIZATIONNAME = dev;
 				TargetAttributes = {
 					D7870D3518897340005BD7BE = {
+						DevelopmentTeam = 4HS35P37S7;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -417,7 +418,7 @@
 				D7870D4A18897340005BD7BE /* AppDelegate.m in Sources */,
 				D7870D4618897340005BD7BE /* main.m in Sources */,
 				D7870D8C188D7DCC005BD7BE /* DataViewController.m in Sources */,
-				D787B8021890088D00377325 /* Motion.m in Sources */,
+				D786781C18903778000AA7BD /* Motion.m in Sources */,
 				D787B7F91890088D00377325 /* Rotation.m in Sources */,
 				D787B7F61890088D00377325 /* Gravity.m in Sources */,
 				D787B7FF1890088D00377325 /* MagneticField.m in Sources */,
@@ -549,15 +550,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"./**",
 					"$(inherited)",
-					/Users/dev/Documents/end06/m7background,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "m7background/m7background-Prefix.pch";
 				INFOPLIST_FILE = "m7background/m7background-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -568,15 +571,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"./**",
 					"$(inherited)",
-					/Users/dev/Documents/end06/m7background,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "m7background/m7background-Prefix.pch";
 				INFOPLIST_FILE = "m7background/m7background-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

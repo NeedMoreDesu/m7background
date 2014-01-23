@@ -14,6 +14,7 @@
     </entity>
     <entity name="Motion" representedClassName="Motion" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="gravity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gravity" inverseName="motion" inverseEntity="Gravity" syncable="YES"/>
         <relationship name="magneticField" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MagneticField" inverseName="motion" inverseEntity="MagneticField" syncable="YES"/>
@@ -33,10 +34,10 @@
         <relationship name="motion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Motion" inverseName="userAcceleration" inverseEntity="Motion" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Rotation" positionX="-927" positionY="-1350" width="128" height="90"/>
-        <element name="Gravity" positionX="-927" positionY="-1323" width="128" height="45"/>
-        <element name="UserAcceleration" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Gravity" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MagneticField" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Motion" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Rotation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="UserAcceleration" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

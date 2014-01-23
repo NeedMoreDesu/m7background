@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-RKValueTransformers.xcscheme</key>
+		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0EAAE9D3F3894C18A3F49E07</key>
+		<key>12515486D84144C6BED17D18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2AAC86D0DD954FAA8A8BDD8B</key>
+		<key>13BFC6650D6C4462A8D322D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E37C84404E443B1B2882894</key>
+		<key>2F703FF3407B493AB8BC8994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>363EAFFA8E4E4C8B9CCEF31C</key>
+		<key>43FB8B06DEAF45919D23EEE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2472A635B2B42ADB7871BFC</key>
+		<key>D89C2DF7DB7F464BBED38655</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F8C11CB25DFE40A28F22111E</key>
+		<key>E9C42E9825A24D2AA85F8905</key>
 		<dict>
 			<key>primary</key>
 			<true/>
